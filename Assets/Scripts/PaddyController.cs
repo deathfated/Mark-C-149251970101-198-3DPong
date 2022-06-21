@@ -6,14 +6,16 @@ public class PaddyController : MonoBehaviour
 {
     public float speed;
 
-    public KeyCode upKey;
-    public KeyCode downKey;
+    public KeyCode leftKey;
+    public KeyCode rightKey;
 
     private Rigidbody rig;
 
+    public string PaddleName;
+
     private void Start()
     {
-        rig = GetComponent<RigidBody>();
+        rig = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -22,22 +24,59 @@ public class PaddyController : MonoBehaviour
         MoveObject(GetInput());
     }
 
-    private Vector2 GetInput()
+    private Vector3 GetInput()
     {
-
-        if (Input.GetKey(upKey))
+        if (PaddleName == "North")
         {
-            return Vector2.up * speed;
-        }
-        if (Input.GetKey(downKey))
-        {
-            return Vector2.down * speed;
+            if (Input.GetKey(leftKey))
+            {
+                return Vector3.left * speed;
+            }
+            if (Input.GetKey(rightKey))
+            {
+                return Vector3.right * speed;
+            }
         }
 
-        return Vector2.zero;
+        if (PaddleName == "East")
+        {
+            if (Input.GetKey(leftKey))
+            {
+                return Vector3.forward * speed;
+            }
+            if (Input.GetKey(rightKey))
+            {
+                return Vector3.back * speed;
+            }
+        }
+
+        if (PaddleName == "South")
+        {
+            if (Input.GetKey(leftKey))
+            {
+                return Vector3.left * speed;
+            }
+            if (Input.GetKey(rightKey))
+            {
+                return Vector3.right * speed;
+            }
+        }
+
+        if (PaddleName == "West")
+        {
+            if (Input.GetKey(leftKey))
+            {
+                return Vector3.forward * speed;
+            }
+            if (Input.GetKey(rightKey))
+            {
+                return Vector3.back * speed;
+            }
+        }
+        return Vector3.zero;
     }
 
-    private void MoveObject(Vector2 movement)
+    private void MoveObject(Vector3 movement)
     {
         rig.velocity = movement;
     }
