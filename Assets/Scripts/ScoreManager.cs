@@ -10,8 +10,6 @@ public class ScoreManager : MonoBehaviour
     public int MagentaScore;
     public int YellowScore;
     public int maxScore;
-    public BolController bol;
-    public BolController bol2;
 
     public int PlayerLost;
     public bool BlackLost;
@@ -43,8 +41,6 @@ public class ScoreManager : MonoBehaviour
     public void AddBlackScore(int decrement)
     {
         BlackScore += decrement;
-        bol.ResetBall();
-        bol2.ResetBall();
         if (BlackScore >= maxScore)
         {
             BlackLose();
@@ -53,8 +49,6 @@ public class ScoreManager : MonoBehaviour
     public void AddCyanScore(int decrement)
     {
         CyanScore += decrement;
-        bol.ResetBall();
-        bol2.ResetBall();
         if (CyanScore >= maxScore)
         {
            CyanLose();
@@ -63,8 +57,6 @@ public class ScoreManager : MonoBehaviour
     public void AddMagentaScore(int decrement)
     {
         MagentaScore += decrement;
-        bol.ResetBall();
-        bol2.ResetBall();
         if (MagentaScore >= maxScore)
         {
             MagentaLose();
@@ -73,8 +65,6 @@ public class ScoreManager : MonoBehaviour
     public void AddYellowScore(int decrement)
     {
         YellowScore += decrement;
-        bol.ResetBall();
-        bol2.ResetBall();
         if (YellowScore >= maxScore)
         {
             YellowLose();

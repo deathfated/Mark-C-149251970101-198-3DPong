@@ -9,12 +9,12 @@ public class BolController : MonoBehaviour
     public Vector3 resetPosition;
 
     private Rigidbody rig;
-    //private GameObject bol;
 
     public void ResetBall()
     {
-        //bol.SetActive(false);
         transform.position = new Vector3(resetPosition.x, resetPosition.y, resetPosition.z);
+        rig = GetComponent<Rigidbody>();
+        rig.velocity = speed;
     }
 
     private void Start()

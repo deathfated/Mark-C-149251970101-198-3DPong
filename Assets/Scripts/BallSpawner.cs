@@ -4,75 +4,81 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-    /*public List<GameObject> BallTemplateList;
-    private List<GameObject> BallList;
 
-    public int maxBallAmount;
-    public Transform spawnArea;
-    public Vector3 BallAreaMin;
-    public Vector3 BallAreaMax;*/
+    public int balz1spawn;
+    public int balz2spawn;
+    public int balz3spawn;
+    public int balz4spawn;
+    public int balz5spawn;
 
-    public int ball1spawn;
     private float timer;
+
+    public GameObject balz;
+    public GameObject balz2;
+    public GameObject balz3;
+    public GameObject balz4;
+    public GameObject balz5;
+
+    public bool Spawn1Complete;
+    public bool Spawn2Complete;
+    public bool Spawn3Complete;
+    public bool Spawn4Complete;
+    public bool Spawn5Complete;
 
     private void Start()
     {
-        //BallList = new List<GameObject>();
         timer = 0;
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
+        //Debug.Log(timer);
 
-        if (timer > ball1spawn)
+        if (timer >= balz1spawn && Spawn1Complete == false)
         {
-            //GenerateRandomPowerUp();
-            timer -= ball1spawn;
+            if (balz.activeSelf == true)
+            {
+                return;
+            }
+            balz.SetActive(!balz.activeInHierarchy);
+            Spawn1Complete = true;
+        }
+        if (timer >= balz2spawn && Spawn2Complete == false)
+        {
+            if (balz2.activeSelf == true)
+            {
+                return;
+            }
+            balz2.SetActive(!balz2.activeInHierarchy);
+            Spawn2Complete = true;
+        }
+        if (timer >= balz3spawn && Spawn3Complete == false)
+        {
+            if (balz3.activeSelf == true)
+            {
+                return;
+            }
+            balz3.SetActive(!balz3.activeInHierarchy);
+            Spawn3Complete = true;
+        }
+        if (timer >= balz4spawn && Spawn4Complete == false)
+        {
+            if (balz4.activeSelf == true)
+            {
+                return;
+            }
+            balz4.SetActive(!balz4.activeInHierarchy);
+            Spawn4Complete = true;
+        }
+        if (timer >= balz5spawn && Spawn5Complete == false)
+        {
+            if (balz5.activeSelf == true)
+            {
+                return;
+            }
+            balz5.SetActive(!balz5.activeInHierarchy);
+            Spawn5Complete = true;
         }
     }
-
-    /*public void GenerateRandomBall() 
-    { 
-        GenerateRandomBall(new Vector3(Random.Range(BallAreaMin.x, BallAreaMax.x), Random.Range(BallAreaMin.y, BallAreaMax.y), Random.Range(BallAreaMin.z, BallAreaMax.z))); 
-    } 
- 
-    public void GenerateRandomBall(Vector3 position) 
-    { 
-        if (BallList.Count >= maxBallAmount) 
-        { 
-            return; 
-        } 
- 
-        if (position.x < BallAreaMin.x || 
-            position.x > BallAreaMax.x || 
-            position.y < BallAreaMin.y || 
-            position.y > BallAreaMax.y ||
-            position.z < BallAreaMin.z ||
-            position.z > BallAreaMax.z) 
-        { 
-            return; 
-        } 
- 
-        int randomIndex = Random.Range(0, BallTemplateList.Count); 
- 
-        GameObject Ball = Instantiate(BallTemplateList[randomIndex], new Vector3(position.x, position.y, BallTemplateList[randomIndex].transform.position.z), Quaternion.identity, spawnArea); 
-        Ball.SetActive(true); 
- 
-        BallList.Add(Ball); 
-    } 
-
-    public void RemoveBall(GameObject ball)
-    {
-        BallList.Remove(ball);
-        Destroy(ball);
-    }
-
-    public void RemoveAllPowerUp()
-    {
-        while (powerUpList.Count > 0)
-        {
-            RemovePowerUp(powerUpList[0]);
-        }
-    }*/
 }
